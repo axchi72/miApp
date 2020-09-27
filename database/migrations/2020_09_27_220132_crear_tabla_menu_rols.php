@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearTablaUsuarioRols extends Migration
+class CrearTablaMenuRols extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,15 @@ class CrearTablaUsuarioRols extends Migration
      */
     public function up()
     {
-        Schema::create('usuario_rols', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('menu_rols', function (Blueprint $table) {
             $table->unsignedBigInteger('rol_id');
-            $table->unsignedBigInteger('usuario_id');
-            $table->boolean('estado');
-            $table->unsignedBigInteger('creo');
-            $table->unsignedBigInteger('actualizo')->nullable();
-            $table->timestamps();
+            $table->unsignedBigInteger('menu_id');
 
-            $table->foreign('rol_id', 'fk_usuariorols_rol')->references('id')->on('rols')
+            $table->foreign('rol_id', 'fk_menurols_rol')->references('id')->on('rols')
             ->onDelete('restrict')
             ->onUpdate('restrict');
 
-            $table->foreign('usuario_id', 'fk_usuariorols_usuario')->references('id')->on('usuarios')
+            $table->foreign('menu_id', 'fk_menurols_menu')->references('id')->on('menus')
             ->onDelete('restrict')
             ->onUpdate('restrict');
             $table->charset = 'utf8mb4';
@@ -41,6 +36,6 @@ class CrearTablaUsuarioRols extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuario_rols');
+        Schema::dropIfExists('menu_rols');
     }
 }

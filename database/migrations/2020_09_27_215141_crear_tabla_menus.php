@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearTablaRols extends Migration
+class CrearTablaMenus extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CrearTablaRols extends Migration
      */
     public function up()
     {
-        Schema::create('rols', function (Blueprint $table) {
+        Schema::create('menus', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('menu_id')->default(0);
             $table->string('nombre', 100);
+            $table->string('url', 100);
+            $table->unsignedInteger('orden')->default(0);
+            $table->string('icono', 50)->nullable();
             $table->unsignedBigInteger('creo');
             $table->unsignedBigInteger('actualizo')->nullable();
             $table->timestamps();
@@ -31,6 +35,6 @@ class CrearTablaRols extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rols');
+        Schema::dropIfExists('menus');
     }
 }

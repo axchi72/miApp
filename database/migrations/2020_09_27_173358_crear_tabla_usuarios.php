@@ -20,10 +20,12 @@ class CrearTablaUsuarios extends Migration
             $table->string('nombre', 100);
             $table->string('correo', 100);
             $table->string('celular', 100);
-            $table->string('foto', 100);
+            $table->string('foto', 100)->nullable();
             $table->unsignedBigInteger('creo');
-            $table->unsignedBigInteger('actualizo');
+            $table->unsignedBigInteger('actualizo')->nullable();
             $table->timestamps();
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_spanish_ci';
         });
     }
 

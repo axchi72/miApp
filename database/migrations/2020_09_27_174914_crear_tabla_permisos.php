@@ -18,8 +18,10 @@ class CrearTablaPermisos extends Migration
             $table->string('nombre', 100);
             $table->string('slug', 100);
             $table->unsignedBigInteger('creo');
-            $table->unsignedBigInteger('actualizo');
+            $table->unsignedBigInteger('actualizo')->nullable();
             $table->timestamps();
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_spanish_ci';
         });
     }
 
