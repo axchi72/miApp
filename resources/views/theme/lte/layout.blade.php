@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables-responsive/css/responsive.bootstrap4.min.css")}}">
         <!-- overlayScrollbars -->
         <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/adminlte.min.css")}}">
+        <!-- MyCss -->
+        <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">
         @yield('styles')
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">

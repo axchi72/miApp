@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ValidacionMenu;
+use App\Models\Admin\Menu;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
@@ -14,7 +16,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
+        $menus = Menu::get();
+        return view('admin.menu.index', compact('menus'));
     }
 
     /**
@@ -24,7 +27,8 @@ class MenuController extends Controller
      */
     public function crear()
     {
-        //
+        return view('admin.menu.crear');
+
     }
 
     /**
@@ -33,9 +37,10 @@ class MenuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function guardar(Request $request)
+    public function guardar(ValidacionMenu $request)
     {
-        //
+        Menu::create($request->all());
+        return redirect('admin/menu')->with('mensaje', 'Menú creado con exito');
     }
 
     /**
@@ -58,7 +63,7 @@ class MenuController extends Controller
      */
     public function actualizar(Request $request, $id)
     {
-        //
+        return redirect('admin/menu')->with('mensaje', 'Menú actualizado con exito');
     }
 
     /**
