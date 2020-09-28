@@ -14,6 +14,10 @@
         <!-- DataTables -->
         <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css")}}">
         <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables-responsive/css/responsive.bootstrap4.min.css")}}">
+        <!-- Toastr -->
+        <link rel="stylesheet" href="{{asset("assets/$theme/plugins/toastr/toastr.min.css")}}">
+        <!-- Sweetalert 2 -->
+        <link rel="stylesheet" href="{{asset("assets/$theme/plugins/sweetalert2/sweetalert2.min.css")}}">
         <!-- overlayScrollbars -->
         <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/adminlte.min.css")}}">
         <!-- MyCss -->
@@ -51,27 +55,24 @@
         <script src="{{asset("assets/$theme/plugins/datatables-responsive/js/responsive.bootstrap4.min.js")}}"></script>
         <!-- AdminLTE App -->
         <script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>
+        @yield('scriptsPlugins')
         <!-- JQuery Validation -->
         <script src="{{asset("assets/$theme/plugins/jquery-validation/jquery.validate.min.js")}}"></script>
         <script src="{{asset("assets/$theme/plugins/jquery-validation/localization/messages_es.min.js")}}"></script>
+        <!-- Sweetalert2 -->
+        <script src="{{asset("assets/$theme/plugins/sweetalert2/sweetalert2.min.js")}}"></script>
+         <!-- Toastr -->
+         <script src="{{asset("assets/$theme/plugins/toastr/toastr.min.js")}}"></script>
+        <script src="{{asset("assets/js/scripts.js")}}"></script>
         <script src="{{asset("assets/js/funciones.js")}}"></script>
 
         @yield('scripts')
 
         <script>
             $(function () {
-              $("#example1").DataTable({
+              $("#tabla-data").DataTable({
                 "responsive": true,
                 "autoWidth": false,
-              });
-              $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
               });
             });
           </script>

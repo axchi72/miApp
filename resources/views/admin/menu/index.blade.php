@@ -4,6 +4,18 @@
     Listado de Menús
 @endsection
 
+@section("styles")
+<link href="{{asset("assets/js/jquery-nestable/jquery.nestable.css")}}" rel="stylesheet" type="text/css" />
+@endsection
+
+@section("scriptsPlugins")
+<script src="{{asset("assets/js/jquery-nestable/jquery.nestable.js")}}" type="text/javascript"></script>
+@endsection
+
+@section("scripts")
+<script src="{{asset("assets/pages/scripts/admin/menu/index.js")}}" type="text/javascript"></script>
+@endsection
+
 @section('contenido')
 
 <!-- Content Header (Page header) -->
@@ -46,26 +58,17 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example1" class="table table-bordered table-hover table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Slug</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($menus as $menu)
-                            <tr>
-                                <td>{{ $menu->id }}</td>
-                                <td>{{ $menu->nombre }}</td>
-                                <td>{{ $menu->url }}</td>
-                                <td></td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                        </table>
+                        @csrf
+                        <div class="dd" id="nestable">
+                            <ol class="dd-list">
+                                @foreach ($menus as $key => $item)
+                                @if ($item["menu_id"] != 0)
+                                @break
+                                @endif
+                                @include('admin.menu.menu-item',["item"=> $item])
+                                @endforeach
+                            </ol>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                     </div>

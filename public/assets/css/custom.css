@@ -1,5 +1,18 @@
-label.requerido:after
-{
+label.requerido:after{
     content: " *";
     color: #E73D4A;
+}
+.btn-accion-tabla {
+    cursor: pointer;
+    border: none;
+    background: 0;
+    padding: 0 0 0 5px;
+    font-size: 14px !important;
+    line-height: 1.5;
+}
+.d-inline{
+    display: inline;
+}
+.width70{
+    width: 70px !important;
 }
