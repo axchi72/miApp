@@ -34,10 +34,9 @@
                 <h3 class="card-title">Listado</h3>
 
                 <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                    <i class="fas fa-minus"></i></button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                    <i class="fas fa-times"></i></button>
+                    <a href="{{ route('crear_menu') }}" class="btn btn-block btn-outline-primary">
+                        <i class="fas fa-pen-alt"></i> Nuevo registro
+                    </a>
                 </div>
                 </div>
                 <div class="card-body">
@@ -73,7 +72,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                Footer
+                    Menús
                 </div>
                 <!-- /.card-footer-->
             </div>

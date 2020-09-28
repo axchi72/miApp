@@ -4,6 +4,10 @@
     Crear Menú
 @endsection
 
+@section('scripts')
+    <script src="{{asset("assets/pages/scripts/admin/menu/crear.js")}}" type="text/javascript"></script>
+@endsection
+
 @section('contenido')
 
 <!-- Content Header (Page header) -->
@@ -34,10 +38,9 @@
                 <h3 class="card-title">Crear</h3>
 
                 <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                    <i class="fas fa-minus"></i></button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                    <i class="fas fa-times"></i></button>
+                    <a href="{{ route('menu') }}" class="btn btn-block btn-outline-primary">
+                        <i class="fas fa-reply-all"></i> Volver al listado
+                    </a>
                 </div>
                 </div>
                 <div class="card-body">
@@ -46,7 +49,7 @@
                             <h3 class="card-title">Mantenimiento de registros</h3>
                         </div>
                         <!-- /.card-header -->
-            <form action="{{ route('guardar_menu') }}" id="form-general" class="form-horizontal" method="POST" autocomplete="off">
+            <form action="{{ route('guardar_menu') }}" id="form-general" class="form-horizontal form--label-right" method="POST" autocomplete="off">
                 @csrf
                         <div class="card-body">
                             @include('admin.menu.form')

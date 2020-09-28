@@ -51,6 +51,10 @@
         <script src="{{asset("assets/$theme/plugins/datatables-responsive/js/responsive.bootstrap4.min.js")}}"></script>
         <!-- AdminLTE App -->
         <script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>
+        <!-- JQuery Validation -->
+        <script src="{{asset("assets/$theme/plugins/jquery-validation/jquery.validate.min.js")}}"></script>
+        <script src="{{asset("assets/$theme/plugins/jquery-validation/localization/messages_es.min.js")}}"></script>
+        <script src="{{asset("assets/js/funciones.js")}}"></script>
 
         @yield('scripts')
 
