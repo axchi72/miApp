@@ -9,6 +9,11 @@ class Menu extends Model
     protected $fillable = ['nombre', 'url', 'icono', 'creo', 'actualizo'];
     protected $guarded = ['id'];
 
+    public function roles()
+    {
+        return $this->belongsToMany(Rol::class, 'menu_rols');
+    }
+
     public function getHijos($padres, $line)
     {
         $children = [];
