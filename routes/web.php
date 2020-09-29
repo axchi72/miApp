@@ -10,10 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Route;
 
 Route::get('/','InicioController@index')->name('inicio');
+Route::get('seguridad/login', 'Seguridad\LoginController@index')->name('login');
+Route::post('seguridad/login', 'Seguridad\LoginController@login')->name('login_post');
+Route::get('seguridad/logout', 'Seguridad\LoginController@logout')->name('logout');
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth','superadmin']], function () {
     /*RUTAS DE PERMISO*/
     Route::get('permiso', 'PermisoController@index')->name('permiso');
     Route::get('permiso/crear', 'PermisoController@crear')->name('crear_permiso');
@@ -42,4 +46,24 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     /*RUTAS PERMISO_ROL*/
     Route::get('permiso-rol', 'PermisoRolController@index')->name('permiso_rol');
     Route::post('permiso-rol', 'PermisoRolController@guardar')->name('guardar_permiso_rol');
+});
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
+    /*RUTAS DE ADMIN */
+    Route::get('admin', 'AdminController@index')->name('admin');
+    Route::get('admin/denegado', 'AdminController@denegado')->name('denegado');
+    /*RUTAS DE USUARIO*/
+    Route::get('usuario', 'UsuarioController@index')->name('usuario');
+    Route::get('usuario/crear', 'UsuarioController@crear')->name('crear_usuario');
+    Route::post('usuario', 'UsuarioController@guardar')->name('guardar_usuario');
+    Route::get('usuario/{id}/editar', 'UsuarioController@editar')->name('editar_usuario');
+    Route::put('usuario/{id}', 'UsuarioController@actualizar')->name('actualizar_usuario');
+    Route::delete('usuario/{id}', 'UsuarioController@eliminar')->name('eliminar_usuario');
+    /*RUTAS Afiliado */
+    Route::get('afiliado', 'AfiliadoController@index')->name('afiliado');
+    Route::get('afiliado/crear', 'AfiliadoController@crear')->name('crear_afiliado');
+    Route::post('afiliado', 'AfiliadoController@guardar')->name('guardar_afiliado');
+    Route::get('afiliado/{id}/editar', 'AfiliadoController@editar')->name('editar_afiliado');
+    Route::put('afiliado/{id}', 'AfiliadoController@actualizar')->name('actualizar_afiliado');
+    Route::delete('afiliado/{id}', 'AfiliadoController@eliminar')->name('eliminar_afiliado');
 });

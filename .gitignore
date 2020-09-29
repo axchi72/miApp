@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/assets/lte
+/database/seeds/UsuarioAdministradorSeeder.php
 /storage/*.key
 /vendor
 .env
