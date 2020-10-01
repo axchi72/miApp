@@ -13,6 +13,12 @@ class InicioController extends Controller
      */
     public function index()
     {
-        return view('inicio');
+        $titulo = 'JDC';
+        return view('inicio.inicio', compact('titulo'));
+    }
+
+    public function acercaDe()
+    {
+        return view('inicio.acercaDe');
     }
 }
