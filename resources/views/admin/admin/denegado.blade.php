@@ -44,7 +44,7 @@ Acceso Denegado
                     <div class="card-footer">
                         <p>
                             Comuníquese con el administrador.
-                            <a href="/admin" class="btn btn-primary" title="ir al inicio">
+                            <a href="{{route('admin')}}" class="btn btn-primary" title="ir al inicio">
                                 <i class="fas fa-reply-all"></i>
                             </a>
                         </p>

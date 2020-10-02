@@ -4,7 +4,7 @@
     <div class="dd3-content {{$item["url"] == "javascript:void(0);" ? "font-weight-bold" : ""}}">
         <a href="{{route("editar_menu", ['id' => $item["id"]])}}">{{$item["nombre"] . " | Url -> " . $item["url"]}}
             Icono -> <i style="font-size:20px;" class="fas fa- {{isset($item["icono"]) ? $item["icono"] : ""}}"></i></a>
-        <a href="{{route('eliminar_menu', ['id' => $item["id"]])}}" class="eliminar-menu tooltipsC"
+        <a href="{{route('eliminar_menu', ['id' => $item["id"]])}}" class="eliminar-menu float-right tooltipsC"
             title="Eliminar este menú"><i class="text-danger fas fa-trash-alt"></i></a>
     </div>
 </li>
@@ -14,7 +14,7 @@
     <div class="dd3-content {{$item["url"] == "javascript:void(0);" ? "font-weight-bold" : ""}}">
         <a href="{{route("editar_menu", ['id' => $item["id"]])}}">{{$item["nombre"] . " | Url -> " . $item["url"]}}
             Icono -> <i style="font-size:20px;" class="fas fa- {{isset($item["icono"]) ? $item["icono"] : ""}}"></i></a>
-        <a href="{{route('eliminar_menu', ['id' => $item["id"]])}}" class="eliminar-menu tooltipsC"
+        <a href="{{route('eliminar_menu', ['id' => $item["id"]])}}" class="eliminar-menu float-right tooltipsC"
             title="Eliminar este menú"><i class="text-danger fas fa-trash-alt"></i></a>
     </div>
     <ol class="dd-list">

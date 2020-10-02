@@ -13,4 +13,7 @@ $(document).ready(function () {
         html: true,
         container: 'body'
     });
+    var menu = $('ul.nav-sidebar').find('a.active').parents('li.has-treeview');
+    menu.addClass('menu-open');
+    menu.children('a').addClass('active');
 });
