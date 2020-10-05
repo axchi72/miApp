@@ -5,7 +5,7 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset("assets/pages/scripts/index.js")}}" type="text/javascript"></script>
+<script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
 @endsection
 
 @section('contenido')
@@ -31,6 +31,7 @@
   <section class="content">
       <div class="row">
         <div class="col-md-12">
+            @include('includes.mensaje')
             <!-- Default box -->
             <div class="card card-outline card-primary">
                 <div class="card-header">

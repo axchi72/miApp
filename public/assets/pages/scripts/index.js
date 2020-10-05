@@ -32,9 +32,9 @@ $(document).ready(function () {
             success: function (respuesta) {
                 if (respuesta.mensaje == "ok") {
                     form.parents('tr').remove();
-                    miApp.notificaciones('El registro fue eliminado correctamente', 'SIGCOPEMH', 'success');
+                    miApp.notificaciones('El registro fue eliminado correctamente', 'Sistema', 'success');
                 } else {
-                    miApp.notificaciones('El registro no pudo ser eliminado, hay recursos usandolo', 'SIGCOPEMH', 'error');
+                    miApp.notificaciones('El registro no pudo ser eliminado, hay recursos usandolo', 'Sistema', 'error');
                 }
             },
             error: function () {

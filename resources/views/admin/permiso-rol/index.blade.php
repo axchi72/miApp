@@ -41,6 +41,7 @@ Permiso - Rol
                         <table class="table table-bordered table-hover table-striped" id="tabla-data">
                             <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Permiso</th>
                                     @foreach ($rols as $id => $nombre)
                                     <th class="text-center">{{$nombre}}</th>
@@ -50,6 +51,7 @@ Permiso - Rol
                             <tbody>
                                 @foreach ($permisos as $key => $permiso)
                                 <tr>
+                                    <td>{{$permiso["id"]}}</td>
                                     <td class="font-weight-bold">{{$permiso["nombre"]}}</td>
                                     @foreach ($rols as $id => $nombre)
                                     <td class="text-center">

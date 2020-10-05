@@ -1,7 +1,7 @@
 @extends("theme.$theme.layout")
 
 @section('titulo')
-    Crear Rol
+    Editar
 @endsection
 
 @section('scripts')
@@ -15,12 +15,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Sistema de Roles</h1>
+          <h1>Sistema de Afiliados</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{ route('rol') }}">Sistema de Rol</a></li>
-            <li class="breadcrumb-item active">Crear Rol</li>
+            <li class="breadcrumb-item"><a href="{{ route('afiliado') }}">Sistema de Afiliados</a></li>
+            <li class="breadcrumb-item active">Actualizar Afiliado</li>
           </ol>
         </div>
       </div>
@@ -35,10 +35,10 @@
             <!-- Default box -->
             <div class="card card-outline card-primary">
                 <div class="card-header">
-                <h3 class="card-title">Crear</h3>
+                <h3 class="card-title">Actualizar Afiliado</h3>
 
                 <div class="card-tools">
-                    <a href="{{ route('rol') }}" class="btn btn-block btn-outline-primary">
+                    <a href="{{ route('afiliado') }}" class="btn btn-block btn-outline-primary">
                         <i class="fas fa-reply-all"></i> Volver al listado
                     </a>
                 </div>
@@ -49,10 +49,10 @@
                             <h3 class="card-title">Mantenimiento de registros</h3>
                         </div>
                         <!-- /.card-header -->
-            <form action="{{ route('guardar_rol') }}" id="form-general" class="form-horizontal form--label-right" method="POST" autocomplete="off">
+            <form action="{{ route('actualizar_afiliado') }}" id="form-general" class="form-horizontal form--label-right" method="POST" autocomplete="off">
                 @csrf
                         <div class="card-body">
-                            @include('admin.rol.form')
+                            @include('afiliado.form')
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -61,7 +61,7 @@
                 <div class="card-footer">
                     <div class="col-lg-2"></div>
                     <div class="col-lg-10">
-                        @include('includes.boton-form-crear')
+                        @include('includes.boton-form-editar')
                     </div>
                 </div>
                 <!-- /.card-footer-->

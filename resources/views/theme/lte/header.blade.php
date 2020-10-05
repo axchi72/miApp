@@ -30,7 +30,7 @@
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-user"></i> {{session()->get('nombre', 'Inivitado')}} - {{session()->get('rol_nombre', 'Guest')}}
+          <i class="far fa-user"></i> {{session()->get('usuario', 'Inivitado')}} - {{session()->get('rol_nombre', 'Guest')}}
 
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
