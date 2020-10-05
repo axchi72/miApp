@@ -30,7 +30,7 @@
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-user"></i> {{session()->get('usuario', 'Inivitado')}} - {{session()->get('rol_nombre', 'Guest')}}
+          <i class="far fa-user"></i> {{session()->get('usuario', 'Invitado')}} - {{session()->get('rol_nombre', 'Guest')}}
 
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -45,9 +45,11 @@
             </a>
             @endauth
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">
+          @if(session()->get("roles") && count(session()->get("roles")) > 1)
+          <a href="#" class="cambiar-rol dropdown-item dropdown-footer">
             <i class="fas fa-exchange-alt"></i> Cambiar Rol
           </a>
+          @endif
         </div>
       </li>
     </ul>

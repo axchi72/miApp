@@ -64,7 +64,7 @@
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-user"></i> {{session()->get('nombre_usuario', 'Inivitado')}}
+            <i class="far fa-user"></i> {{session()->get('nombre_usuario', 'Invitado')}}
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             @guest

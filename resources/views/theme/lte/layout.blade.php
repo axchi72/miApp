@@ -43,6 +43,34 @@
             <!-- Footer -->
             @include("theme/$theme/footer")
             <!-- /.footer -->
+            <!-- Launch modal window to log in with more than one role -->
+            @if (session()->get("roles") && count(session()->get("roles")) > 1)
+            @csrf
+            <div class="modal fade" id="modal-seleccionar-rol" data-rol-set="{{empty(session()->get("rol_id")) ? 'NO' : 'SI'}}" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Rolse de Usuario</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Cuentas con más de un Rol en la plataforma, a continuación seleccione con cual de ellos desea
+                                ingresar</p>
+                            @foreach (session()->get("roles") as $key => $rol)
+                            <li>
+                                <a href="#" class="asignar-rol" data-rolid="{{$rol['id']}}" data-rolnombre="{{$rol["nombre"]}}">
+                                    {{$rol["nombre"]}}
+                                </a>
+                            </li>
+                            @endforeach
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+            @endif
+            <!-- /. launch modal-->
         </div>
         <!-- jQuery -->
         <script src="{{asset("assets/$theme/plugins/jquery/jquery.min.js")}}"></script>
