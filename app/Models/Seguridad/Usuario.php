@@ -6,6 +6,9 @@ use App\Models\Admin\Rol;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class Usuario extends Authenticatable
 {
@@ -42,5 +45,23 @@ class Usuario extends Authenticatable
     public function setPasswordAttribute($pass)
     {
         $this->attributes['password'] = Hash::make($pass);
+    }
+
+    public static function setFoto($foto, $actual = false)
+    {
+        if ($foto) {
+            if ($actual) {
+                Storage::disk('public')->delete("img/usuarios/$actual");
+            }
+            $imageName = Str::random(20) . '.jpg';
+            $imagen = Image::make($foto)->encode('jpg', 75);
+            $imagen->resize(530, 470, function ($constraint) {
+                $constraint->upsize();
+            });
+            Storage::disk('public')->put("img/usuarios/$imageName", $imagen->stream());
+            return $imageName;
+        } else {
+            return false;
+        }
     }
 }

@@ -40,6 +40,8 @@ class UsuarioController extends Controller
      */
     public function guardar(ValidacionUsuario $request)
     {
+        if ($foto = Usuario::setFoto($request->foto_up))
+            $request->request->add(['foto' => $foto]);
         $usuario = Usuario::create($request->all());
         $usuario->roles()->sync($request->rol_id);
         return redirect('admin/usuario')->with('mensaje', 'Usuario creado con exito');
