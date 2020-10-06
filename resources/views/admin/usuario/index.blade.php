@@ -68,7 +68,7 @@ Sistema Usuario
                                         </a>
                                     </td>
                                     <td>{{ $data->nombre }}</td>
-                                    <td>{{ $data->correo }}</td>
+                                    <td>{{ $data->email }}</td>
                                     <td>{{ $data->celular }}</td>
                                     <td>
                                         @foreach ($data->roles as $rol)

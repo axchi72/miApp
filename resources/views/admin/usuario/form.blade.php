@@ -5,9 +5,9 @@
     </div>
 </div>
 <div class="form-group row">
-    <label for="correo" class="col-lg-3 col-form-label requerido">Correo Electronico</label>
+    <label for="email" class="col-lg-3 col-form-label requerido">E-Mail</label>
     <div class="col-lg-9">
-        <input type="email" name="correo" id="correo" class="form-control" value="{{old('correo', $data->correo ?? '')}}" required />
+        <input type="email" name="email" id="email" class="form-control" value="{{old('email', $data->email ?? '')}}" required />
     </div>
 </div>
 <div class="form-group row">

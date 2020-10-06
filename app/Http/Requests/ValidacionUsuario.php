@@ -27,7 +27,7 @@ class ValidacionUsuario extends FormRequest
             return [
                 'usuario' => 'required|max:100|unique:usuarios,usuario,' . $this->route('id'),
                 'nombre' => 'required|max:100',
-                'correo' => 'required|email|max:100|unique:usuarios,correo,' . $this->route('id'),
+                'email' => 'required|email|max:100|unique:usuarios,email,' . $this->route('id'),
                 'celular' => 'required|max:15',
                 'password' => 'nullable|min:5',
                 're_password' => 'nullable|required_with:password|min:5|same:password',
@@ -38,7 +38,7 @@ class ValidacionUsuario extends FormRequest
             return [
                 'usuario' => 'required|max:100|unique:usuarios,usuario,' . $this->route('id'),
                 'nombre' => 'required|max:100',
-                'correo' => 'required|email|max:100|unique:usuarios,correo,' . $this->route('id'),
+                'email' => 'required|email|max:100|unique:usuarios,email,' . $this->route('id'),
                 'celular' => 'required|max:15',
                 'password' => 'required|min:5',
                 're_password' => 'required|min:5|same:password',

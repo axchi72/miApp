@@ -1,5 +1,5 @@
 <div>{{$usuario->nombre}}</div>
-<div>{{$usuario->correo}}</div>
+<div>{{$usuario->email}}</div>
 <div>{{$usuario->celular}}</div>
 <div>{{$usuario->usuario}}</div>
 <div>

@@ -2,19 +2,21 @@
 
 namespace App\Models\Seguridad;
 
-use App\Models\Admin\Rol;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Admin\Rol;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
 class Usuario extends Authenticatable
 {
+    use Notifiable;
     protected $remember_token = false;
     protected $fillable = [
-        'usuario','password','nombre', 'correo', 'celular', 'foto', 'creo', 'actualizo',
+        'usuario','password','nombre', 'email', 'celular', 'foto', 'creo', 'actualizo',
     ];
 
     public function roles()
