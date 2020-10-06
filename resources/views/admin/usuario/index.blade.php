@@ -5,7 +5,7 @@ Sistema Usuario
 @endsection
 
 @section('scripts')
-<script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
+<script src="{{asset("assets/pages/scripts/admin/usuario/index.js")}}" type="text/javascript"></script>
 @endsection
 
 @section('contenido')
@@ -32,6 +32,7 @@ Sistema Usuario
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
+                @csrf
                 @include('includes.mensaje')
                 <!-- Default box -->
                 <div class="card card-primary card-outline">
@@ -61,7 +62,11 @@ Sistema Usuario
                                 @foreach ($datas as $data)
                                 <tr>
                                     <td>{{ $data->id }}</td>
-                                    <td>{{ $data->usuario }}</td>
+                                    <td>
+                                        <a href="{{route('ver_usuario', $data)}}" class="ver-usuario">
+                                            {{ $data->usuario }}
+                                        </a>
+                                    </td>
                                     <td>{{ $data->nombre }}</td>
                                     <td>{{ $data->correo }}</td>
                                     <td>{{ $data->celular }}</td>
@@ -97,6 +102,22 @@ Sistema Usuario
                     <!-- /.card-footer-->
                 </div>
                 <!-- /.card -->
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-ver-usuario" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
     </div>

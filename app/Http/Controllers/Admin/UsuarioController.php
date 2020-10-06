@@ -7,6 +7,7 @@ use App\Http\Requests\ValidacionUsuario;
 use App\Models\Admin\Rol;
 use App\Models\Seguridad\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UsuarioController extends Controller
 {
@@ -53,9 +54,10 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function mostrar($id)
+    public function ver(Usuario $usuario)
     {
-        //
+       // dd($usuario);
+        return view('admin.usuario.ver', compact('usuario'));
     }
 
     /**
@@ -81,6 +83,8 @@ class UsuarioController extends Controller
     public function actualizar(ValidacionUsuario $request, $id)
     {
         $usuario = Usuario::findOrFail($id);
+        if ($foto = Usuario::setFoto($request->foto_up, $usuario->foto))
+            $request->request->add(['foto' => $foto]);
         $usuario->update(array_filter($request->all()));
         $usuario->roles()->sync($request->rol_id);
         return redirect('admin/usuario')->with('mensaje', 'Usuario actualizado con exito');
@@ -96,9 +100,13 @@ class UsuarioController extends Controller
     {
         if ($request->ajax()) {
             $usuario = Usuario::findOrFail($id);
-            $usuario->roles()->detach();
-            $usuario->delete();
-            return response()->json(['mensaje' => 'ok']);
+            if (Usuario::destroy($id)) {
+                $usuario->roles()->detach();
+                Storage::disk('public')->delete("img/usuarios/$usuario->foto");
+                return response()->json(['mensaje' => 'ok']);
+            }else {
+                return response()->json(['mensaje' => 'ng']);
+            }
         } else {
             abort(404);
         }

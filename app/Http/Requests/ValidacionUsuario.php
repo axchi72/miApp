@@ -31,7 +31,8 @@ class ValidacionUsuario extends FormRequest
                 'celular' => 'required|max:15',
                 'password' => 'nullable|min:5',
                 're_password' => 'nullable|required_with:password|min:5|same:password',
-                'rol_id' => 'required|array'
+                'rol_id' => 'required|array',
+                'foto_up' => 'nullable|image|max:1024'
             ];
         } else {
             return [
@@ -41,8 +42,16 @@ class ValidacionUsuario extends FormRequest
                 'celular' => 'required|max:15',
                 'password' => 'required|min:5',
                 're_password' => 'required|min:5|same:password',
-                'rol_id' => 'required|array'
+                'rol_id' => 'required|array',
+                'foto_up' => 'nullable|image|max:1024'
             ];
         }
+    }
+
+    public function messages()
+    {
+        return [
+            'foto_up.max' => 'La imagen de usuario no puede tener un peso mayor a 1MB'
+        ];
     }
 }
