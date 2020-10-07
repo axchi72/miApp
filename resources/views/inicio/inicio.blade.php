@@ -1,74 +1,65 @@
 @extends("theme.$theme.template")
 
 @section('titulo')
-    Inicio
+Inicio
 @endsection
 
 @section('contenido')
-  <!-- Main content -->
-  <br />
-  <div class="content">
+<!-- Main content -->
+<div class="row">
+    <div class="col-lg-12">
+        <!-- Nivo-Slider -->
+        <div class="slider-wrapper theme-light">
+            <div id="slider" class="nivoSlider">
+                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_1.jpg")}}" />
+                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_2.jpg")}}" />
+                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_3.jpg")}}" />
+                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_4.jpg")}}" />
+            </div>
+        </div>
+        <!-- /.nivo-slider -->
+    </div>
+</div>
+<br />
+<div class="content">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">{{$titulo}}</h5>
-
-              <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's
-                content.
-              </p>
-
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+        @foreach ($posts as $post)
+        <div class="row">
+            <!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="img-fluid pad img-thumbnail mt-4" src="{{Storage::url("img/posts/$post->foto")}}"
+                            alt="Photo">
+                    </div>
+                </div>
             </div>
-          </div>
+            <!-- /.col-lg-4 -->
+            <!-- /.col-lg-8 -->
+            <div class="col-lg-8">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h5 class="card-title m-0">{{ $post->titulo}}</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-title">{{ $post->created_at}}</h6>
 
-          <div class="card card-primary card-outline">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-
-              <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's
-                content.
-              </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+                        <p class="card-text">{{ getShorterString($post->contenido, 100)}}</p>
+                        <a href="{{ route('mostrar.post', ['id' => $post->id])}}" class="btn btn-primary"><i
+                                class="fas fa-book-reader"></i> Ver más</a>
+                    </div>
+                </div>
             </div>
-          </div><!-- /.card -->
+            <!-- /.col-lg-6 -->
         </div>
-        <!-- /.col-md-6 -->
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="card-title m-0">Featured</h5>
-            </div>
-            <div class="card-body">
-              <h6 class="card-title">Special title treatment</h6>
-
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-
-          <div class="card card-primary card-outline">
-            <div class="card-header">
-              <h5 class="card-title m-0">Featured</h5>
-            </div>
-            <div class="card-body">
-              <h6 class="card-title">Special title treatment</h6>
-
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
+        <!-- /.row -->
+        <hr />
+        @endforeach
+        <div class="card-footer">
+            {{ $posts->links() }}
         </div>
-        <!-- /.col-md-6 -->
-      </div>
-      <!-- /.row -->
     </div><!-- /.container-fluid -->
-  </div>
-  <!-- /.content -->
+</div>
+<!-- /.content -->
 
-  @endsection
+@endsection

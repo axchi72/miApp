@@ -66,7 +66,7 @@ Publicaciones]
                                     <td>{{ $data->created_at }}</td>
                                     <td>{{ $data->titulo }}</td>
                                     <td>{{ $data->extracto }}</td>
-                                    <td>{{ $data->contenido }}</td>
+                                    <td>{{ getShorterString($data->contenido, 100)}}</td>
                                     <td>
                                         <img src="{{Storage::url("img/posts/$data->foto")}}" width="50px">
                                     </td>

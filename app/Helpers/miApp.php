@@ -2,6 +2,25 @@
 
 use App\Models\Admin\Permiso;
 
+if(!function_exists('getShorterString')){
+    function getShorterString($text, $lengh=null)
+    {
+        $formatedString = ucwords($text);
+
+        if ($lengh != null) {
+            if(strlen($formatedString) <= $lengh){
+                return$formatedString;
+            }else{
+                $y=substr($formatedString, 0, $lengh) . '...';
+                return $y;
+            }
+        } else {
+            return $formatedString;
+        }
+
+    }
+}
+
 if (!function_exists('getMenuActivo')) {
     function getMenuActivo($ruta)
     {
@@ -37,3 +56,5 @@ if (!function_exists('canUser')) {
         }
     }
 }
+
+
