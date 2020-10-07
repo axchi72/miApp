@@ -16,6 +16,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{asset("assets/$theme/plugins/fontawesome-free/css/all.min.css")}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/adminlte.min.css")}}">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{asset("assets/$theme/plugins/toastr/toastr.min.css")}}">
+    <!-- Sweetalert 2 -->
+    <link rel="stylesheet" href="{{asset("assets/$theme/plugins/sweetalert2/sweetalert2.min.css")}}">
     <!-- Nivo-slider-->
     <link rel="stylesheet" type="text/css" href="{{asset("assets/js/nivo-slider/css/nivo-slider.css")}}" />
     <link href="{{asset("assets/js/nivo-slider/themes/light/light.css")}}" rel="stylesheet" type="text/css" />
@@ -56,6 +60,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>
     <!-- jQuery -->
     <script src="{{asset("assets/js/nivo-slider/js/1.12.4-jquery.min.js")}}"></script>
+    <!-- JQuery Validation -->
+    <script src="{{asset("assets/$theme/plugins/jquery-validation/jquery.validate.min.js")}}"></script>
+    <script src="{{asset("assets/$theme/plugins/jquery-validation/localization/messages_es.min.js")}}"></script>
+    <!-- Sweetalert2 -->
+    <script src="{{asset("assets/$theme/plugins/sweetalert2/sweetalert2.min.js")}}"></script>
+     <!-- Toastr -->
+     <script src="{{asset("assets/$theme/plugins/toastr/toastr.min.js")}}"></script>
+    <script src="{{asset("assets/js/funciones.js")}}"></script>
+    @yield('scriptsPlugins')
     <!-- Nivo-Slider -->
     <script src="{{asset("assets/js/nivo-slider/js/jquery.nivo.slider.js")}}"></script>
     <script type="text/javascript">

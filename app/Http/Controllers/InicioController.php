@@ -23,6 +23,16 @@ class InicioController extends Controller
         return view('inicio.acercaDe');
     }
 
+    public function servicios()
+    {
+        return view('inicio.servicios');
+    }
+
+    public function actualizar()
+    {
+        return view('inicio.actualizar');
+    }
+
     /**
      * Display the specified resource.
      *

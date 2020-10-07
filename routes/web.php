@@ -20,6 +20,8 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 
 Route::get('/','InicioController@index')->name('inicio');
 Route::get('/acercaDe','InicioController@acercaDe')->name('acercaDe');
+Route::get('/servicios','InicioController@servicios')->name('servicios');
+Route::get('/actualizar','InicioController@actualizar')->name('actualizar');
 Route::get('/mostrar/{id}','InicioController@mostrar')->name('mostrar.post');
 Route::get('seguridad/login', 'Seguridad\LoginController@index')->name('login');
 Route::post('seguridad/login', 'Seguridad\LoginController@login')->name('login_post');
