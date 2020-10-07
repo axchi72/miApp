@@ -4,6 +4,7 @@ namespace App\Models\Seguridad;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Admin\Rol;
+use App\Models\Frontend\Post;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
@@ -65,5 +66,10 @@ class Usuario extends Authenticatable
         } else {
             return false;
         }
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }

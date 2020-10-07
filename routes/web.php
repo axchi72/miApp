@@ -68,8 +68,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     /*RUTAS DE ADMIN */
     Route::get('admin', 'AdminController@index')->name('admin');
     Route::get('admin/denegado', 'AdminController@denegado')->name('denegado');
-
-
 });
 
 /*RUTAS Afiliado */
@@ -79,3 +77,15 @@ Route::post('afiliado', 'AfiliadoController@guardar')->name('guardar_afiliado');
 Route::get('afiliado/{id}/editar', 'AfiliadoController@editar')->name('editar_afiliado');
 Route::put('afiliado/{id}', 'AfiliadoController@actualizar')->name('actualizar_afiliado');
 Route::delete('afiliado/{id}', 'AfiliadoController@eliminar')->name('eliminar_afiliado');
+
+/* RUTAS DE POST */
+Route::group(['prefix' => 'frontend', 'namespace' => 'Frontend', 'middleware' => 'auth'], function () {
+    /*RUTAS DE ADMIN */
+    Route::get('post', 'PostController@index')->name('post');
+    Route::get('post/crear', 'PostController@crear')->name('crear.post');
+    Route::post('post', 'PostController@guardar')->name('guardar.post');
+    Route::post('post/{post}', 'PostController@ver')->name('ver.post');
+    Route::get('post/{id}/editar', 'PostController@editar')->name('editar.post');
+    Route::put('post/{id}', 'PostController@actualizar')->name('actualizar.post');
+    Route::delete('post/{id}', 'PostController@eliminar')->name('eliminar.post');
+});
