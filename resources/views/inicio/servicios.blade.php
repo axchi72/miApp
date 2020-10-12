@@ -52,11 +52,41 @@ Inicio
                     </div>
                 </div><!-- /.card -->
             </div>
-
-
         </div>
         <!-- /.row -->
-
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Formularios</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                                <thead>
+                                    <tr>
+                                      <th>Nombre</th>
+                                      <th>Ver</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                      @foreach ($datas as $data)
+                                      <tr>
+                                        <td>{{ $data->nombre}}</td>
+                                            <td>
+                                                <a href="{{asset("assets/pdf/$data->enlace")}}">
+                                                    <i class="fas fa-file-pdf"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                      @endforeach
+                                  </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content -->

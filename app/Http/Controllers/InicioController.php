@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Frontend\Documento;
 use App\Models\Frontend\Post;
 use Illuminate\Http\Request;
 class InicioController extends Controller
@@ -25,7 +26,8 @@ class InicioController extends Controller
 
     public function servicios()
     {
-        return view('inicio.servicios');
+        $datas = Documento::orderBy('id')->get();
+        return view('inicio.servicios', compact('datas'));
     }
 
     public function actualizar()

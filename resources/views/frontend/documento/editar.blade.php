@@ -1,11 +1,21 @@
 @extends("theme.$theme.layout")
 
 @section('titulo')
-    Editar Menú
+    Crear Documento
+@endsection
+
+@section('styles')
+    <link href="{{asset("assets/js/bootstrap-fileinput/css/fileinput.min.css")}}" rel="stylesheet"  type="text/css"/>
+@endsection
+
+@section('scriptsPlugins')
+<script src="{{asset("assets/js/bootstrap-fileinput/js/fileinput.min.js")}}" type="text/javascript"></script>
+<script src="{{asset("assets/js/bootstrap-fileinput/js/locales/es.js")}}" type="text/javascript"></script>
+<script src="{{asset("assets/js/bootstrap-fileinput/themes/fas/theme.min.js")}}" type="text/javascript"></script>
 @endsection
 
 @section('scripts')
-    <script src="{{asset("assets/pages/scripts/admin/menu/crear.js")}}" type="text/javascript"></script>
+    <script src="{{asset("assets/pages/scripts/frontend/documento/crear.js")}}" type="text/javascript"></script>
 @endsection
 
 @section('contenido')
@@ -15,12 +25,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Sistema de Menús</h1>
+          <h1>Documentos</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{ route('menu') }}">Sistema de Menús</a></li>
-            <li class="breadcrumb-item active">Editar Menús</li>
+            <li class="breadcrumb-item"><a href="{{ route('documento') }}">Documentos</a></li>
+            <li class="breadcrumb-item active">Crear Documento</li>
           </ol>
         </div>
       </div>
@@ -35,10 +45,10 @@
             <!-- Default box -->
             <div class="card card-outline card-primary">
                 <div class="card-header">
-                <h3 class="card-title">Editar</h3>
+                <h3 class="card-title">Crear</h3>
 
                 <div class="card-tools">
-                    <a href="{{ route('menu') }}" class="btn btn-block btn-outline-primary">
+                    <a href="{{ route('documento') }}" class="btn btn-block btn-outline-primary">
                         <i class="fas fa-reply-all"></i> Volver al listado
                     </a>
                 </div>
@@ -49,10 +59,10 @@
                             <h3 class="card-title">Mantenimiento de registros</h3>
                         </div>
                         <!-- /.card-header -->
-            <form action="{{route('actualizar_menu', ['id' => $data->id])}}" id="form-general" class="form-horizontal form--label-right" method="POST" autocomplete="off">
-                @csrf @method('put')
+            <form action="{{ route('actualizar.documento', ['id' => $data->id]) }}" id="form-general" class="form-horizontal" method="POST" autocomplete="off" enctype="multipart/form-data">
+                @csrf @method("put")
                         <div class="card-body">
-                            @include('admin.menu.form')
+                            @include('frontend.documento.form')
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -61,7 +71,7 @@
                 <div class="card-footer">
                     <div class="col-lg-2"></div>
                     <div class="col-lg-10">
-                        @include('includes.boton-form-editar')
+                        @include('includes.boton-form-crear')
                     </div>
                 </div>
                 <!-- /.card-footer-->

@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\afiliado;
+use App\Http\Requests\ValidacionAfiliado;
+use App\Models\Afiliado;
 use Illuminate\Http\Request;
 
 class AfiliadoController extends Controller
@@ -15,7 +16,7 @@ class AfiliadoController extends Controller
     public function index()
     {
         can('listar-afiliado');
-        $datas = afiliado::orderBy('id')->get();
+        $datas = Afiliado::orderBy('id')->get();
         return view('afiliado.index', compact('datas'));
     }
 
@@ -36,9 +37,13 @@ class AfiliadoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function guardar(Request $request)
+    public function guardar(ValidacionAfiliado $request)
     {
-        //
+        //dd($request);
+        if($foto = Afiliado::setFoto($request->foto_up))
+            $request->request->add(['foto' => $foto]);
+        Afiliado::create($request->all());
+        return redirect()->route('actualizar')->with('mensaje', 'El formulario se envió correctamente');
     }
 
     /**

@@ -91,4 +91,13 @@ Route::group(['prefix' => 'frontend', 'namespace' => 'Frontend', 'middleware' =>
     Route::get('post/{id}/editar', 'PostController@editar')->name('editar.post');
     Route::put('post/{id}', 'PostController@actualizar')->name('actualizar.post');
     Route::delete('post/{id}', 'PostController@eliminar')->name('eliminar.post');
+    /* RUTAS DE DOCUMENTOS */
+    Route::get('documento', 'DocumentoController@index')->name('documento');
+    Route::get('documento/crear', 'DocumentoController@crear')->name('crear.documento');
+    Route::post('documento', 'DocumentoController@guardar')->name('guardar.documento');
+    Route::post('documento/{documento}', 'DocumentoController@ver')->name('ver.documento');
+    Route::get('documento/{id}/editar', 'DocumentoController@editar')->name('editar.documento');
+    Route::put('documento/{id}', 'DocumentoController@actualizar')->name('actualizar.documento');
+    Route::delete('documento/{id}', 'DocumentoController@eliminar')->name('eliminar.documento');
 });
+

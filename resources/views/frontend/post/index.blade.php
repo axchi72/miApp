@@ -1,7 +1,7 @@
 @extends("theme.$theme.layout")
 
 @section('titulo')
-Publicaciones]
+Publicaciones
 @endsection
 
 @section('scripts')
