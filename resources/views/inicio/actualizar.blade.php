@@ -89,7 +89,7 @@ Actualizar Datos
                                             <label for="escalafon" class="col-form-label requerido">Escalafón</label>
                                             <div>
                                                 <input type="text" name="escalafon" id="escalafon" class="form-control"
-                                                    value="{{old('escalafon', $data->escalafon ?? '')}}" />
+                                                    value="{{old('escalafon', $data->escalafon ?? '')}}" required />
                                             </div>
                                         </div>
                                     </div>
@@ -158,7 +158,7 @@ Actualizar Datos
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Situación Laboral</label>
-                                            <select name="slaboral" class="form-control">
+                                            <select name="slaboral" class="form-control" required>
                                                 <option value="">Seleccione Situación</option>
                                                 <option value="1">Permanente</option>
                                                 <option value="2">Interino</option>
@@ -172,12 +172,13 @@ Actualizar Datos
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Cotiza por:</label>
-                                            <select name="cotiza" class="form-control">
+                                            <select name="cotiza" class="form-control" required>
                                                 <option value="">Seleccione fuente </option>
                                                 <option value="1">Escalafon</option>
                                                 <option value="2">INPREMA</option>
                                                 <option value="3">Cooperativa COMASOL</option>
                                                 <option value="4">Ventanilla</option>
+                                                <option value="5">No Aplica</option>
                                             </select>
                                         </div>
                                     </div>

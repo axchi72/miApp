@@ -42,9 +42,9 @@ $(document).ready(function () {
                 if (funcion == "eliminarAfiliado") {
                     if (respuesta.mensaje == "ok"){
                         form.parents('tr').remove();
-                        miApp.notificaciones('El registro fue eliminado correctamente', 'MiApp', 'success');
+                        miApp.notificaciones('El registro fue eliminado correctamente', 'SIGCOPEMH', 'success');
                     }else {
-                        miApp.notificaciones('El registro no pudo ser eliminado, hay recursos usandolo', 'miApp', 'error');
+                        miApp.notificaciones('El registro no pudo ser eliminado, hay recursos usandolo', 'SIGCOPEMH', 'error');
                     }
 
                 } else if (funcion == 'verAfiliado') {

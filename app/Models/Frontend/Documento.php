@@ -17,6 +17,7 @@ class Documento extends Model
                 Storage::disk('public')->delete("img/documentos/$actual");
             }
             $pdfName = Str::random(20) . '.pdf';
+            $enlace = $pdfName;
             Storage::disk('public')->put("img/documentos/$pdfName", null);
             return $pdfName;
 

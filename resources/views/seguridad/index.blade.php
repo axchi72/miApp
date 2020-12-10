@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
+<head><meta charset="gb18030">
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>MiApp | Login</title>
     <!-- Tell the browser to be responsive to screen width -->
@@ -23,7 +23,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{route('inicio')}}">Mi <b>App</b></a>
+            <a href="{{route('inicio')}}">SIG <b>COPEMH</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="card">

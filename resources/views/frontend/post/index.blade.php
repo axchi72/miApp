@@ -52,7 +52,6 @@ Publicaciones
                                     <th class="width30">ID</th>
                                     <th>Creado</th>
                                     <th>Título</th>
-                                    <th>Extracto</th>
                                     <th>Contenido</th>
                                     <th>Imágen</th>
                                     <th>Creado por</th>
@@ -65,7 +64,6 @@ Publicaciones
                                     <td>{{ $data->id }}</td>
                                     <td>{{ $data->created_at }}</td>
                                     <td>{{ $data->titulo }}</td>
-                                    <td>{{ $data->extracto }}</td>
                                     <td>{{ getShorterString($data->contenido, 100)}}</td>
                                     <td>
                                         <img src="{{Storage::url("img/posts/$data->foto")}}" width="50px">

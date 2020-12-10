@@ -7,17 +7,37 @@ Inicio
 @section('contenido')
 <!-- Main content -->
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-8">
         <!-- Nivo-Slider -->
         <div class="slider-wrapper theme-light">
             <div id="slider" class="nivoSlider">
                 <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_1.jpg")}}" />
+                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_10.jpg")}}" />
                 <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_2.jpg")}}" />
+                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_11.jpg")}}" />
                 <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_3.jpg")}}" />
+                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_12.jpg")}}" />
                 <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_4.jpg")}}" />
+                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_13.jpg")}}" />
+                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_5.jpg")}}" />
+                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_6.jpg")}}" />
+                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_7.jpg")}}" />
+                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_8.jpg")}}" />
+                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_9.jpg")}}" />
             </div>
         </div>
         <!-- /.nivo-slider -->
+    </div>
+    <div class="col-lg-4">
+        <div class="slider-wrapper theme-light">
+            <div id="slider" class="nivoSlider">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="{{asset("assets/video/saludo.mp4")}}" allowfullscreen></iframe>
+                </div>
+                <h3 class="profile-username text-center">Fidel Ernesto Garcia</h3>
+                <p class="text-muted text-center">Presidente J.D.C.</p>
+            </div>
+        </div>
     </div>
 </div>
 <br />

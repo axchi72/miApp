@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /* RUTAS PASSWORD RESET */
@@ -77,6 +79,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 Route::get('afiliado', 'AfiliadoController@index')->name('afiliado');
 Route::get('afiliado/crear', 'AfiliadoController@crear')->name('crear_afiliado');
 Route::post('afiliado', 'AfiliadoController@guardar')->name('guardar_afiliado');
+Route::post('afiliado/{afiliado}', 'AfiliadoController@ver')->name('ver_afiliado');
 Route::get('afiliado/{id}/editar', 'AfiliadoController@editar')->name('editar_afiliado');
 Route::put('afiliado/{id}', 'AfiliadoController@actualizar')->name('actualizar_afiliado');
 Route::delete('afiliado/{id}', 'AfiliadoController@eliminar')->name('eliminar_afiliado');
@@ -100,4 +103,6 @@ Route::group(['prefix' => 'frontend', 'namespace' => 'Frontend', 'middleware' =>
     Route::put('documento/{id}', 'DocumentoController@actualizar')->name('actualizar.documento');
     Route::delete('documento/{id}', 'DocumentoController@eliminar')->name('eliminar.documento');
 });
+
+
 

@@ -74,8 +74,8 @@ Inicio
                                       <tr>
                                         <td>{{ $data->nombre}}</td>
                                             <td>
-                                                <a href="{{asset("assets/pdf/$data->enlace")}}">
-                                                    <i class="fas fa-file-pdf"></i>
+                                                <a href="{{Storage::url("img/documentos/$data->enlace")}}">
+                                                    <i class="fas fa-file-pdf text-danger"></i>
                                                 </a>
                                             </td>
                                         </tr>

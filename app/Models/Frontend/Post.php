@@ -10,7 +10,7 @@ use Intervention\Image\Facades\Image;
 
 class Post extends Model
 {
-    protected $fillable = ['titulo', 'extracto', 'icono', 'contenido', 'foto', 'usuario_id'];
+    protected $fillable = ['titulo', 'icono', 'contenido', 'foto', 'usuario_id'];
 
     public function user()
     {

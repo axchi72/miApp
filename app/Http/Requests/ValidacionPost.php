@@ -25,7 +25,6 @@ class ValidacionPost extends FormRequest
     {
         return [
             'titulo' => 'required|max:100',
-            'extracto' => 'required|max:255',
             'contenido' => 'required',
             'foto_up' => 'nullable|image|max:1024'
         ];

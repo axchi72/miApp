@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidacionAfiliado;
 use App\Models\Afiliado;
+use App\Models\Seguridad\Usuario;
 use Illuminate\Http\Request;
 
 class AfiliadoController extends Controller
@@ -52,9 +53,10 @@ class AfiliadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function mostrar($id)
+    public function ver(Afiliado $afiliado)
     {
-        //
+        //dd($afiliado);
+        return view('afiliado.ver', compact('afiliado'));
     }
 
     /**

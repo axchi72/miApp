@@ -5,7 +5,7 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
+<script src="{{asset("assets/pages/scripts/frontend/afiliados/index.js")}}" type="text/javascript"></script>
 @endsection
 
 @section('contenido')
@@ -53,7 +53,6 @@
                         <table id="tabla-data" class="table table-bordered table-hover table-striped">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Identidad</th>
                                 <th>Nombre</th>
                                 <th>Foto</th>
@@ -63,9 +62,13 @@
                         <tbody>
                             @foreach ($datas as $data)
                             <tr>
-                                <td>{{ $data->id }}</td>
                                 <td>{{ $data->identidad }}</td>
-                                <td>{{ $data->nombre }}</td>
+                                <td>
+                                    <a href="{{route('ver_afiliado', $data)}}" class="ver-afiliado">
+                                        {{ $data->nombre }}
+                                    </a>
+                                </td>
+
                                 <td></td>
                                 <td text-align="center">
                                     <a href="{{route('editar_afiliado', ['id' => $data->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
@@ -88,13 +91,29 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                Footer
+                Afiliados
                 </div>
                 <!-- /.card-footer-->
             </div>
         <!-- /.card -->
         </div>
       </div>
+      <div class="modal fade" id="modal-ver-afiliado" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Afiliado</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
   </section>
   <!-- /.content -->
 

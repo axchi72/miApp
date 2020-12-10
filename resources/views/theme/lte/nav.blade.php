@@ -47,10 +47,10 @@
                     <a href="{{route('logout')}}" class="nav-link">
                         <i class="fas fa-sign-out-alt mr-2"></i> Salir
                     </a>
-                    @endauth
                     <div class="dropdown-divider"></div>
-
                     <a href="#" class="dropdown-item dropdown-footer">Cambiar Rol</a>
+                    @endauth
+                    
 
                 </div>
             </li>
