@@ -24,7 +24,7 @@
                     <a href="{{route('servicios')}}" class="nav-link"><i class="fas fa-server"></i> Servicios</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('actualizar')}}" class="nav-link"><i class="fas fa-chalkboard-teacher"></i> Actualización</a>
+                    <a href="{{route('actualizar.datos')}}" class="nav-link"><i class="fas fa-chalkboard-teacher"></i> Actualización</a>
                 </li>
             </ul>
         </div>
@@ -50,7 +50,7 @@
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item dropdown-footer">Cambiar Rol</a>
                     @endauth
-                    
+
 
                 </div>
             </li>

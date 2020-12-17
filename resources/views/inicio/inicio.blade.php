@@ -12,13 +12,9 @@ Inicio
         <div class="slider-wrapper theme-light">
             <div id="slider" class="nivoSlider">
                 <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_1.jpg")}}" />
-                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_10.jpg")}}" />
                 <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_2.jpg")}}" />
-                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_11.jpg")}}" />
                 <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_3.jpg")}}" />
-                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_12.jpg")}}" />
                 <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_4.jpg")}}" />
-                <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_13.jpg")}}" />
                 <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_5.jpg")}}" />
                 <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_6.jpg")}}" />
                 <img class="img-thumbnail" src="{{asset("assets/js/nivo-slider/img/copemh_7.jpg")}}" />

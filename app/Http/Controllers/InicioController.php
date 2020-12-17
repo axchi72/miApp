@@ -30,9 +30,9 @@ class InicioController extends Controller
         return view('inicio.servicios', compact('datas'));
     }
 
-    public function actualizar()
+    public function actualizarDatos()
     {
-        return view('inicio.actualizar');
+        return view('inicio.actualizarDatos');
     }
 
     /**
