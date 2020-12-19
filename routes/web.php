@@ -106,6 +106,26 @@ Route::group(['prefix' => 'frontend', 'namespace' => 'Frontend', 'middleware' =>
     Route::get('documento/{id}/editar', 'DocumentoController@editar')->name('editar.documento');
     Route::put('documento/{id}', 'DocumentoController@actualizar')->name('actualizar.documento');
     Route::delete('documento/{id}', 'DocumentoController@eliminar')->name('eliminar.documento');
+    /*RUTAS DEPARTAMENTO */
+    Route::get('rol', 'RolController@index')->name('rol');
+    Route::get('rol/crear', 'RolController@crear')->name('crear_rol');
+    Route::post('rol', 'RolController@guardar')->name('guardar_rol');
+    Route::get('rol/{id}/editar', 'RolController@editar')->name('editar_rol');
+    Route::put('rol/{id}', 'RolController@actualizar')->name('actualizar_rol');
+    Route::delete('rol/{id}', 'RolController@eliminar')->name('eliminar_rol');
+
+});
+
+/* RUTAS DE PARAMETRIZACION */
+Route::group(['prefix' => 'parametrizacion', 'namespace' => 'Parametrizacion', 'middleware' => 'auth'], function () {
+    /*RUTAS DEPARTAMENTO */
+    Route::get('departamento', 'DepartamentoController@index')->name('departamento');
+    Route::get('departamento/crear', 'DepartamentoController@crear')->name('crear_departamento');
+    Route::post('departamento', 'DepartamentoController@guardar')->name('guardar_departamento');
+    Route::get('departamento/{id}/editar', 'DepartamentoController@editar')->name('editar_departamento');
+    Route::put('departamento/{id}', 'DepartamentoController@actualizar')->name('actualizar_departamento');
+    Route::delete('departamento/{id}', 'DepartamentoController@eliminar')->name('eliminar_departamento');
+
 });
 
 

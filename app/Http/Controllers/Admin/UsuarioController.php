@@ -57,7 +57,7 @@ class UsuarioController extends Controller
     public function ver(Usuario $usuario)
     {
        // dd($usuario);
-        return view('admin.usuario.ver', compact('usuario'));
+       return view('admin.usuario.ver', compact('usuario'));
     }
 
     /**
