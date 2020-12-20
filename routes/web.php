@@ -125,6 +125,13 @@ Route::group(['prefix' => 'parametrizacion', 'namespace' => 'Parametrizacion', '
     Route::get('departamento/{id}/editar', 'DepartamentoController@editar')->name('editar_departamento');
     Route::put('departamento/{id}', 'DepartamentoController@actualizar')->name('actualizar_departamento');
     Route::delete('departamento/{id}', 'DepartamentoController@eliminar')->name('eliminar_departamento');
+    /*RUTAS MUNICIPIO */
+    Route::get('municipio', 'MunicipioController@index')->name('municipio');
+    Route::get('municipio/crear', 'MunicipioController@crear')->name('crear_municipio');
+    Route::post('municipio', 'MunicipioController@guardar')->name('guardar_municipio');
+    Route::get('municipio/{id}/editar', 'MunicipioController@editar')->name('editar_municipio');
+    Route::put('municipio/{id}', 'MunicipioController@actualizar')->name('actualizar_municipio');
+    Route::delete('municipio/{id}', 'MunicipioController@eliminar')->name('eliminar_municipio');
 
 });
 
