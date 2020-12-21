@@ -132,6 +132,13 @@ Route::group(['prefix' => 'parametrizacion', 'namespace' => 'Parametrizacion', '
     Route::get('municipio/{id}/editar', 'MunicipioController@editar')->name('editar_municipio');
     Route::put('municipio/{id}', 'MunicipioController@actualizar')->name('actualizar_municipio');
     Route::delete('municipio/{id}', 'MunicipioController@eliminar')->name('eliminar_municipio');
+    /*RUTAS SITUACION LABORAL */
+    Route::get('slaboral', 'SlaboralController@index')->name('slaboral');
+    Route::get('slaboral/crear', 'SlaboralController@crear')->name('crear_slaboral');
+    Route::post('slaboral', 'SlaboralController@guardar')->name('guardar_slaboral');
+    Route::get('slaboral/{id}/editar', 'SlaboralController@editar')->name('editar_slaboral');
+    Route::put('slaboral/{id}', 'SlaboralController@actualizar')->name('actualizar_slaboral');
+    Route::delete('slaboral/{id}', 'SlaboralController@eliminar')->name('eliminar_slaboral');
 
 });
 

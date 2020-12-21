@@ -9,19 +9,10 @@
 <div class="row">
     <div class="col-lg-4">
         <div class="form-group">
-            <label for="afiliacion" class="col-form-label requerido">Afiliación</label>
+            <label for="id" class="col-form-label requerido">Afiliación</label>
             <div>
-                <input type="text" name="afiliacion" id="afiliacion" class="form-control"
-                    value="{{old('afiliacion', $data->afiliacion ?? '')}}" required />
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="form-group">
-            <label for="escalafon" class="col-form-label requerido">Escalafón</label>
-            <div>
-                <input type="text" name="escalafon" id="escalafon" class="form-control"
-                    value="{{old('escalafon', $data->escalafon ?? '')}}" required />
+                <input type="text" name="id" id="id" class="form-control"
+                    value="{{old('id', $data->id ?? '')}}" required />
             </div>
         </div>
     </div>
@@ -31,6 +22,15 @@
             <div>
                 <input type="text" name="identidad" id="identidad" class="form-control"
                     value="{{old('identidad', $data->identidad ?? '')}}" required />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label for="escalafon" class="col-form-label requerido">Escalafón</label>
+            <div>
+                <input type="text" name="escalafon" id="escalafon" class="form-control"
+                    value="{{old('escalafon', $data->escalafon ?? '')}}" required />
             </div>
         </div>
     </div>
@@ -47,23 +47,23 @@
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            <label for="lnacimiento" class="col-form-label requerido">Lugar de
+            <label for="lnac" class="col-form-label requerido">Lugar de
                 Nacimiento</label>
             <div>
-                <input type="text" name="lnacimiento" id="lnacimiento"
+                <input type="text" name="lnac" id="lnac"
                     class="form-control"
-                    value="{{old('lnacimiento', $data->lnacimiento ?? '')}}" required />
+                    value="{{old('lnac', $data->birth_place ?? '')}}" required />
             </div>
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            <label for="fnacimiento" class="col-form-label requerido">Fecha de
+            <label for="fnac" class="col-form-label requerido">Fecha de
                 Nacimiento</label>
             <div>
-                <input type="date" name="fnacimiento" id="fnacimiento"
+                <input type="date" name="fnac" id="fnac"
                     class="form-control"
-                    value="{{old('fnacimiento', $data->fnacimiento ?? '')}}" required />
+                    value="{{old('fnac', $data->fnac ?? '')}}" required />
             </div>
         </div>
     </div>
@@ -89,13 +89,12 @@
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            <label>Situación Laboral</label>
-            <select name="slaboral" class="form-control" required>
-                <option value="">Seleccione Situación</option>
-                <option value="1">Permanente</option>
-                <option value="2">Interino</option>
-                <option value="3">Jubilado / Pensionado</option>
-                <option value="4">desempleado</option>
+            <label for="slaboral_id" class="control-label {{!isset($data) ? 'requerido' : '' }}">Situación laboral</label>
+            <select name="slaboral_id" id="slaboral_id" class="form-control" required>
+                <option value="">Seleccione Situación laboral</option>
+                    @foreach ($slaborals as $id => $nombre)
+                        <option value="{{$id}}" {{old("slaboral_id", $data->slaboral['id'] ?? "") == $id ? "selected" : ""}}>{{$nombre}}</option>
+                    @endforeach
             </select>
         </div>
     </div>

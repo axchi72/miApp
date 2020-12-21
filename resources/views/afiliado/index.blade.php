@@ -44,48 +44,78 @@
                 </div>
                 </div>
                 <div class="card-body">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Mantenimiento de registros</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <table id="tabla-data" class="table table-bordered table-hover table-striped">
-                        <thead>
-                            <tr>
-                                <th>Identidad</th>
-                                <th>Nombre</th>
-                                <th>Foto</th>
-                                <th class="width70"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($datas as $data)
-                            <tr>
-                                <td>{{ $data->identidad }}</td>
-                                <td>
-                                    <a href="{{route('ver_afiliado', $data)}}" class="ver-afiliado">
-                                        {{ $data->nombre }}
-                                    </a>
-                                </td>
-
-                                <td></td>
-                                <td text-align="center">
-                                    <a href="{{route('editar_afiliado', ['id' => $data->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <form action="{{route('eliminar_afiliado', ['id' => $data->id])}}" class="d-inline form-eliminar" method="POST">
-                                        @csrf @method("delete")
-                                        <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro">
-                                            <i class="fas fa-trash-alt text-danger"></i>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Busqueda de Afiliados
+                                <form action="{{ route('afiliado') }}" class="form-inline pull-right" method="GET" autocomplete="off">
+                                    <div class="form-group">
+                                        <input type="text" name="identidad" class="form-control" placeholder="Identidad"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="afiliacion" class="form-control" placeholder="Afiliacion"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="name" class="form-control" placeholder="Nombre"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="lastName" class="form-control" placeholder="Apellido"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-search"></i>
                                         </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                        </table>
-                    </div>
+                                    </div>
+                                </form>
+                            </h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Afiliacion</th>
+                                        <th>Identidad</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Estado</th>
+                                        <th class="width70"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($datas as $data)
+                                    <tr>
+                                        <td>{{ $data->id }}</td>
+                                        <td>{{ $data->card_id }}</td>
+                                        <td>
+                                            <a href="{{route('ver_afiliado', $data)}}" class="ver-afiliado">
+                                                {{ $data->first_name }}
+                                            </a>
+                                        </td>
+                                        <td>{{ $data->last_name }}</td>
+                                        <td>
+                                            @if ($data->active == 1)
+                                                Activo
+                                            @else
+                                                Inactivo
+                                            @endif
+                                        </td>
+                                        <td text-align="center">
+                                            <a href="{{route('editar_afiliado', ['id' => $data->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <form action="{{route('eliminar_afiliado', ['id' => $data->id])}}" class="d-inline form-eliminar" method="POST">
+                                                @csrf @method("delete")
+                                                <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro">
+                                                    <i class="fas fa-trash-alt text-danger"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                                </table>
+                                {{ $datas->render()}}
+                        </div>
                     <!-- /.card-body -->
                     </div>
                 </div>

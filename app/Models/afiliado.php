@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Parametrizacion\Slaboral;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -30,4 +31,35 @@ class Afiliado extends Model
         }
 
     }
+
+    public function scopeIdentidad($query, $identidad)
+    {
+        if($identidad)
+            return $query->where('card_id', 'LIKE', "%$identidad%");
+    }
+
+    public function scopeAfiliacion($query, $afiliacion)
+    {
+        if($afiliacion)
+            return $query->where('id', 'LIKE', "%$afiliacion%");
+    }
+
+    public function scopeName($query, $name)
+    {
+        if($name)
+            return $query->where('first_name', 'LIKE', "%$name%");
+    }
+
+    public function scopeLastName($query, $lastName)
+    {
+        if($lastName)
+            return $query->where('last_name', 'LIKE', "%$lastName%");
+    }
+
+    public function slaboral()
+    {
+        return $this->belongsTo(Slaboral::class);
+    }
+
+
 }

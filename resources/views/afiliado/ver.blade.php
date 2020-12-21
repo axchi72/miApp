@@ -1,6 +1,6 @@
 <div class="card card-widget widget-user">
     <div class="widget-user-header bg-info">
-        <h3 class="widget-user-username">{{$afiliado->nombre}}</h3>
+        <h3 class="widget-user-username">{{$afiliado->first_name}} {{$afiliado->last_name}}</h3>
         <h5 class="widget-user-desc">{{$afiliado->email}}</h5>
       </div>
     <div class="widget-user-image">
@@ -10,29 +10,29 @@
         <div class="row">
             <div class="col-sm-4 border-right">
               <div class="description-block">
-                <h5 class="description-header">Identidad</h5>
-                <span class="description-text">{{$afiliado->identidad}}</span>
+                <h5 class="description-header">Afiliacion</h5>
+                <span class="description-text">{{$afiliado->id}}</span>
               </div>
               <!-- /.description-block -->
             </div>
             <!-- /.col -->
             <div class="col-sm-4 border-right">
-              <div class="description-block">
-                <h5 class="description-header">Afiliacion</h5>
-                <span class="description-text">{{$afiliado->afiliacion}}</span>
+                <div class="description-block">
+                  <h5 class="description-header">Identidad</h5>
+                  <span class="description-text">{{$afiliado->card_id}}</span>
+                </div>
+                <!-- /.description-block -->
               </div>
-              <!-- /.description-block -->
-            </div>
-            <!-- /.col -->
+              <!-- /.col -->
             <div class="col-sm-4">
-              <div class="description-block">
-                <h5 class="description-header">Celular</h5>
-                <span class="description-text">{{$afiliado->celular}}</span>
+                <div class="description-block">
+                  <h5 class="description-header">Nombre</h5>
+                  <span class="description-text">{{$afiliado->first_name}} {{$afiliado->last_name}}</span>
+                </div>
+                <!-- /.description-block -->
               </div>
-              <!-- /.description-block -->
-            </div>
-            <!-- /.col -->
-          </div>
+              <!-- /.col -->
+        </div>
     </div>
 </div>
 

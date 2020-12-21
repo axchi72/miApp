@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidacionAfiliado;
 use App\Models\Afiliado;
+use App\Models\Parametrizacion\Slaboral;
 use App\Models\Seguridad\Usuario;
 use Illuminate\Http\Request;
 
@@ -14,10 +15,20 @@ class AfiliadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         can('listar-afiliado');
-        $datas = Afiliado::orderBy('id')->get();
+        $identidad  = $request->get('identidad');
+        $afiliacion = $request->get('afiliacion');
+        $name       = $request->get('name');
+        $lastName       = $request->get('lastName');
+
+        $datas = Afiliado::orderBy('id', 'DESC')
+            ->identidad($identidad)
+            ->afiliacion($afiliacion)
+            ->name($name)
+            ->lastName($lastName)
+            ->paginate(10);
         return view('afiliado.index', compact('datas'));
     }
 
@@ -29,7 +40,8 @@ class AfiliadoController extends Controller
     public function crear()
     {
         can('crear-afiliado');
-        return view('afiliado.crear');
+        $slaborals = Slaboral::orderBy('id')->pluck('nombre','id')->toArray();
+        return view('afiliado.crear', compact('slaborals'));
     }
 
     /**
@@ -67,7 +79,8 @@ class AfiliadoController extends Controller
      */
     public function editar($id)
     {
-        //
+        $data = Afiliado::findOrFail($id);
+        return view('afiliado.editar',compact('data'));
     }
 
     /**
