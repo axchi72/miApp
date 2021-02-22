@@ -19,7 +19,7 @@
             <div class="col-sm-4 border-right">
                 <div class="description-block">
                   <h5 class="description-header">Identidad</h5>
-                  <span class="description-text">{{$afiliado->card_id}}</span>
+                  <span class="description-text">{{$afiliado->identidad}}</span>
                 </div>
                 <!-- /.description-block -->
               </div>
@@ -27,7 +27,7 @@
             <div class="col-sm-4">
                 <div class="description-block">
                   <h5 class="description-header">Nombre</h5>
-                  <span class="description-text">{{$afiliado->first_name}} {{$afiliado->last_name}}</span>
+                  <span class="description-text">{{$afiliado->nombre}} {{$afiliado->apellido}}</span>
                 </div>
                 <!-- /.description-block -->
               </div>

@@ -2,6 +2,7 @@
 
 namespace App\Models\Parametrizacion;
 
+use App\Models\Afiliado;
 use Illuminate\Database\Eloquent\Model;
 
 class Municipio extends Model
@@ -12,4 +13,5 @@ class Municipio extends Model
     {
         return $this->belongsTo(Departamento::class);
     }
+
 }

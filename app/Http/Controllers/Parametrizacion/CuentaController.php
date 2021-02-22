@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Parametrizacion;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ValidacionMunicipio;
-use App\Models\Parametrizacion\Departamento;
-use App\Models\Parametrizacion\Municipio;
+use App\Http\Requests\ValidacionCuenta;
+use App\Models\Parametrizacion\Cuenta;
 use Illuminate\Http\Request;
 
-class MunicipioController extends Controller
+class CuentaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class MunicipioController extends Controller
      */
     public function index()
     {
-        $datas = Municipio::orderBy('id')->get();
-        return view('parametrizacion.municipio.index', compact('datas'));
+        $datas = Cuenta::orderBy('id')->get();
+        return view('parametrizacion.cuenta.index', compact('datas'));
     }
 
     /**
@@ -28,8 +27,7 @@ class MunicipioController extends Controller
      */
     public function crear()
     {
-        $departamentos = Departamento::orderBy('id')->pluck('nombre','id')->toArray();
-        return view('parametrizacion.municipio.crear', compact('departamentos'));
+        return view('parametrizacion.cuenta.crear');
     }
 
     /**
@@ -38,21 +36,10 @@ class MunicipioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function guardar(ValidacionMunicipio $request)
+    public function guardar(ValidacionCuenta $request)
     {
-        $municipio = Municipio::create($request->all());
-        return redirect('parametrizacion/municipio')->with('mensaje', 'Municipio creado con exito');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function byDepto($id)
-    {
-        return Municipio::where('departamento_id', $id)->get();
+        Cuenta::create($request->all());
+        return redirect('parametrizacion/cuenta')->with('mensaje', 'cuenta creada con exito');
     }
 
     /**
@@ -63,9 +50,8 @@ class MunicipioController extends Controller
      */
     public function editar($id)
     {
-        $departamentos = Departamento::orderBy('id')->pluck('nombre','id')->toArray();
-        $data = Municipio::findOrFail($id);
-        return view('parametrizacion.municipio.editar', compact('data','departamentos'));
+        $data = Cuenta::findOrFail($id);
+        return view('parametrizacion.cuenta.editar', compact('data'));
     }
 
     /**
@@ -75,11 +61,10 @@ class MunicipioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function actualizar(Request $request, $id)
+    public function actualizar(ValidacionCuenta $request, $id)
     {
-        Municipio::findOrFail($id)->update($request->all());
-        return redirect('parametrizacion/municipio')->with('mensaje', 'Municipio actualizado con exito');
-
+        Cuenta::findOrFail($id)->update($request->all());
+        return redirect('parametrizacion/cuenta')->with('mensaje', 'cuenta actualizada con exito');
     }
 
     /**
@@ -91,7 +76,7 @@ class MunicipioController extends Controller
     public function eliminar(Request $request, $id)
     {
         if ($request->ajax()) {
-            if (Municipio::destroy($id)) {
+            if (Cuenta::destroy($id)) {
                 return response()->json(['mensaje' => 'ok']);
             } else {
                 return response()->json(['mensaje' => 'ng']);

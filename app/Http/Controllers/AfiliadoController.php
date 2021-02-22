@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidacionAfiliado;
 use App\Models\Afiliado;
+use App\Models\Parametrizacion\Banco;
+use App\Models\Parametrizacion\Cotiza;
+use App\Models\Parametrizacion\Deduccion;
+use App\Models\Parametrizacion\Departamento;
+use App\Models\Parametrizacion\Municipio;
 use App\Models\Parametrizacion\Slaboral;
 use App\Models\Seguridad\Usuario;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class AfiliadoController extends Controller
 {
@@ -19,15 +25,15 @@ class AfiliadoController extends Controller
     {
         can('listar-afiliado');
         $identidad  = $request->get('identidad');
-        $afiliacion = $request->get('afiliacion');
-        $name       = $request->get('name');
-        $lastName       = $request->get('lastName');
+        $id = $request->get('id');
+        $nombre       = $request->get('nombre');
+        $apellido       = $request->get('apellido');
 
         $datas = Afiliado::orderBy('id', 'DESC')
             ->identidad($identidad)
-            ->afiliacion($afiliacion)
-            ->name($name)
-            ->lastName($lastName)
+            ->id($id)
+            ->nombre($nombre)
+            ->apellido($apellido)
             ->paginate(10);
         return view('afiliado.index', compact('datas'));
     }
@@ -41,7 +47,10 @@ class AfiliadoController extends Controller
     {
         can('crear-afiliado');
         $slaborals = Slaboral::orderBy('id')->pluck('nombre','id')->toArray();
-        return view('afiliado.crear', compact('slaborals'));
+        $cotizas = Cotiza::orderBy('id')->pluck('nombre','id')->toArray();
+        $departamentos = Departamento::orderBy('id')->pluck('nombre','id')->toArray();
+        $bancos = Banco::orderBy('id')->pluck('nombre','id')->toArray();
+        return view('afiliado.crear', compact('slaborals','cotizas','departamentos','bancos'));
     }
 
     /**
@@ -56,7 +65,7 @@ class AfiliadoController extends Controller
         if($foto = Afiliado::setFoto($request->foto_up))
             $request->request->add(['foto' => $foto]);
         Afiliado::create($request->all());
-        return redirect()->route('actualizar')->with('mensaje', 'El formulario se envió correctamente');
+        return redirect()->route('afiliado')->with('mensaje', 'El formulario se envió correctamente');
     }
 
     /**
@@ -77,10 +86,27 @@ class AfiliadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function mostrar($id)
+    {
+
+        $data = Afiliado::with('deduccions')->findOrFail($id);
+        return view('afiliado.mostrar',compact('data'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function editar($id)
     {
         $data = Afiliado::findOrFail($id);
-        return view('afiliado.editar',compact('data'));
+        $slaborals = Slaboral::orderBy('id')->pluck('nombre','id')->toArray();
+        $cotizas = Cotiza::orderBy('id')->pluck('nombre','id')->toArray();
+        $departamentos = Departamento::orderBy('id')->pluck('nombre','id')->toArray();
+        $bancos = Banco::orderBy('id')->pluck('nombre','id')->toArray();
+        return view('afiliado.editar',compact('data','slaborals','cotizas','departamentos','bancos'));
     }
 
     /**
@@ -90,9 +116,21 @@ class AfiliadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function actualizar(Request $request, $id)
+    public function actualizar(ValidacionAfiliado $request, $id)
     {
-        //
+        //dd($request);
+        $afiliado = Afiliado::findOrFail($id);
+        if ($foto = Afiliado::setFoto($request->foto_up, $afiliado->foto))
+            $request->request->add(['foto' => $foto]);
+        $afiliado->update(array_filter($request->all()));
+        return redirect()->route('afiliado')->with('mensaje', 'afiliado actualizado con exito');
+    }
+
+    public function exportPdf($id)
+    {
+        $data = Afiliado::with('deduccions')->findOrFail($id);
+        $pdf = PDF::loadView('afiliado.pdf', compact('data'));
+        return $pdf->download('afiliados-deducciones.pdf');
     }
 
     /**
@@ -104,5 +142,16 @@ class AfiliadoController extends Controller
     public function eliminar($id)
     {
         //
+    }
+
+    public function getMunicipios(Request $request)
+    {
+        if($request->ajax()) {
+            $municipios = Municipio::where('departamento_id', $request->departamento)->get();
+            foreach ($municipios as $municipio) {
+                $muniArrays[$municipio->id] = $municipio->nombre;
+            }
+            return response()->json($muniArrays);
+        }
     }
 }

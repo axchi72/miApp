@@ -14,9 +14,7 @@
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
-/*Route::get('storage-link', function(){
-    Artisan::call('storage:link');
-});*/
+
 
 /* RUTAS PASSWORD RESET */
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
@@ -27,7 +25,6 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 Route::get('/','InicioController@index')->name('inicio');
 Route::get('/acercaDe','InicioController@acercaDe')->name('acercaDe');
 Route::get('/servicios','InicioController@servicios')->name('servicios');
-Route::get('/actualizarDatos','InicioController@actualizarDatos')->name('actualizar.datos');
 Route::get('/mostrar/{id}','InicioController@mostrar')->name('mostrar.post');
 Route::get('seguridad/login', 'Seguridad\LoginController@index')->name('login');
 Route::post('seguridad/login', 'Seguridad\LoginController@login')->name('login_post');
@@ -84,6 +81,9 @@ Route::get('afiliado', 'AfiliadoController@index')->name('afiliado');
 Route::get('afiliado/crear', 'AfiliadoController@crear')->name('crear_afiliado');
 Route::post('afiliado', 'AfiliadoController@guardar')->name('guardar_afiliado');
 Route::post('afiliado/{afiliado}', 'AfiliadoController@ver')->name('ver_afiliado');
+Route::get('afiliado/{id}/mostrar', 'AfiliadoController@mostrar')->name('mostrar_afiliado');
+Route::get('afiliado/{id}/pdf', 'AfiliadoController@exportPdf')->name('afiliado_pdf');
+Route::get('afiliado/{id}/excel', 'AfiliadoController@exportExcel')->name('afiliado_excel');
 Route::get('afiliado/{id}/editar', 'AfiliadoController@editar')->name('editar_afiliado');
 Route::put('afiliado/{id}', 'AfiliadoController@actualizar')->name('actualizar_afiliado');
 Route::delete('afiliado/{id}', 'AfiliadoController@eliminar')->name('eliminar_afiliado');
@@ -139,7 +139,32 @@ Route::group(['prefix' => 'parametrizacion', 'namespace' => 'Parametrizacion', '
     Route::get('slaboral/{id}/editar', 'SlaboralController@editar')->name('editar_slaboral');
     Route::put('slaboral/{id}', 'SlaboralController@actualizar')->name('actualizar_slaboral');
     Route::delete('slaboral/{id}', 'SlaboralController@eliminar')->name('eliminar_slaboral');
+    /*RUTAS COTIZA */
+    Route::get('cotiza', 'CotizaController@index')->name('cotiza');
+    Route::get('cotiza/crear', 'CotizaController@crear')->name('crear_cotiza');
+    Route::post('cotiza', 'CotizaController@guardar')->name('guardar_cotiza');
+    Route::get('cotiza/{id}/editar', 'CotizaController@editar')->name('editar_cotiza');
+    Route::put('cotiza/{id}', 'CotizaController@actualizar')->name('actualizar_cotiza');
+    Route::delete('cotiza/{id}', 'CotizaController@eliminar')->name('eliminar_cotiza');
+    /*RUTAS BANCO */
+    Route::get('banco', 'BancoController@index')->name('banco');
+    Route::get('banco/crear', 'BancoController@crear')->name('crear_banco');
+    Route::post('banco', 'BancoController@guardar')->name('guardar_banco');
+    Route::get('banco/{id}/editar', 'BancoController@editar')->name('editar_banco');
+    Route::put('banco/{id}', 'BancoController@actualizar')->name('actualizar_banco');
+    Route::delete('banco/{id}', 'BancoController@eliminar')->name('eliminar_banco');
+    /*RUTAS CUENTA */
+    Route::get('cuenta', 'CuentaController@index')->name('cuenta');
+    Route::get('cuenta/crear', 'CuentaController@crear')->name('crear_cuenta');
+    Route::post('cuenta', 'CuentaController@guardar')->name('guardar_cuenta');
+    Route::get('cuenta/{id}/editar', 'CuentaController@editar')->name('editar_cuenta');
+    Route::put('cuenta/{id}', 'CuentaController@actualizar')->name('actualizar_cuenta');
+    Route::delete('cuenta/{id}', 'CuentaController@eliminar')->name('eliminar_cuenta');
 
+});
+
+Route::get('storage-link', function(){
+    Artisan::call('storage:link');
 });
 
 

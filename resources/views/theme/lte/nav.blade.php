@@ -23,9 +23,6 @@
                 <li class="nav-item">
                     <a href="{{route('servicios')}}" class="nav-link"><i class="fas fa-server"></i> Servicios</a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{route('actualizar.datos')}}" class="nav-link"><i class="fas fa-chalkboard-teacher"></i> Actualización</a>
-                </li>
             </ul>
         </div>
 

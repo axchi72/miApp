@@ -16,9 +16,8 @@
 
 @section('scripts')
 <script src="{{asset("assets/pages/scripts/frontend/afiliados/crear.js")}}" type="text/javascript"></script>
+<script src="{{asset("assets/pages/scripts/frontend/afiliados/munis.js")}}" type="text/javascript"></script>
 @endsection
-
-@section('contenido')
 
 @section('contenido')
 
@@ -61,8 +60,8 @@
                             <h3 class="card-title">Mantenimiento de registros</h3>
                         </div>
                         <!-- /.card-header -->
-            <form action="{{ route('actualizar_afiliado', ['id' => $data->id]) }}" id="form-general" class="form-horizontal form--label-right" method="POST" autocomplete="off">
-                @csrf
+            <form action="{{ route('actualizar_afiliado', ['id' => $data->id]) }}" id="form-general" class="form-horizontal form--label-right" method="POST" enctype="multipart/form-data" autocomplete="off">
+                @csrf @method("put")
                         <div class="card-body">
                             @include('afiliado.form')
                         </div>

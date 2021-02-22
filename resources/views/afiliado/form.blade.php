@@ -7,16 +7,16 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-3">
         <div class="form-group">
             <label for="id" class="col-form-label requerido">Afiliación</label>
             <div>
-                <input type="text" name="id" id="id" class="form-control"
-                    value="{{old('id', $data->id ?? '')}}" required />
+                <input type="text" name="id" id="id" class="form-control" value="{{old('id', $data->id ?? '')}}"
+                    required />
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-3">
         <div class="form-group">
             <label for="identidad" class="col-form-label requerido">Identidad</label>
             <div>
@@ -25,18 +25,27 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-3">
         <div class="form-group">
             <label for="escalafon" class="col-form-label requerido">Escalafón</label>
             <div>
                 <input type="text" name="escalafon" id="escalafon" class="form-control"
-                    value="{{old('escalafon', $data->escalafon ?? '')}}" required />
+                    value="{{old('escalafon', $data->escalafon ?? '')}}" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label for="inprema" class="col-form-label requerido">INPREMA</label>
+            <div>
+                <input type="text" name="inprema" id="inprema" class="form-control"
+                    value="{{old('inprema', $data->inprema ?? '')}}" />
             </div>
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-3">
         <div class="form-group">
             <label for="nombre" class="col-form-label requerido">Nombre</label>
             <div>
@@ -45,31 +54,48 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label for="apellido" class="col-form-label requerido">Apellido</label>
+            <div>
+                <input type="text" name="apellido" id="apellido" class="form-control"
+                    value="{{old('apellido', $data->apellido ?? '')}}" required />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
         <div class="form-group">
             <label for="lnac" class="col-form-label requerido">Lugar de
                 Nacimiento</label>
             <div>
-                <input type="text" name="lnac" id="lnac"
-                    class="form-control"
-                    value="{{old('lnac', $data->birth_place ?? '')}}" required />
+                <input type="text" name="lnac" id="lnac" class="form-control" value="{{old('lnac', $data->lnac ?? '')}}"
+                    required />
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-3">
         <div class="form-group">
             <label for="fnac" class="col-form-label requerido">Fecha de
                 Nacimiento</label>
             <div>
-                <input type="date" name="fnac" id="fnac"
-                    class="form-control"
-                    value="{{old('fnac', $data->fnac ?? '')}}" required />
+                <input type="date" name="fnac" id="fnac" class="form-control" value="{{old('fnac', $data->fnac ?? '')}}"
+                    required />
             </div>
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label for="genero" class="col-form-label requerido">Genero</label>
+            <select name="genero" id="genero" class="form-control" required>
+                <option value="">Seleccione</option>
+                <option value="1" {{old("genero", $data->genero ?? "") == 1 ? "selected" : ""}}>Femenino</option>
+                <option value="2" {{old("genero", $data->genero ?? "") == 2 ? "selected" : ""}}>Masculino</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-3">
         <div class="form-group">
             <label for="email" class="col-form-label requerido">E-Mail</label>
             <div>
@@ -78,7 +104,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-3">
         <div class="form-group">
             <label for="celular" class="col-form-label requerido">Celular</label>
             <div>
@@ -87,14 +113,16 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-3">
         <div class="form-group">
-            <label for="slaboral_id" class="control-label {{!isset($data) ? 'requerido' : '' }}">Situación laboral</label>
+            <label for="slaboral_id" class="control-label {{!isset($data) ? 'requerido' : '' }}">Situación
+                laboral</label>
             <select name="slaboral_id" id="slaboral_id" class="form-control" required>
                 <option value="">Seleccione Situación laboral</option>
-                    @foreach ($slaborals as $id => $nombre)
-                        <option value="{{$id}}" {{old("slaboral_id", $data->slaboral['id'] ?? "") == $id ? "selected" : ""}}>{{$nombre}}</option>
-                    @endforeach
+                @foreach ($slaborals as $id => $nombre)
+                <option value="{{$id}}" {{old("slaboral_id", $data->slaboral['id'] ?? "") == $id ? "selected" : ""}}>
+                    {{$nombre}}</option>
+                @endforeach
             </select>
         </div>
     </div>
@@ -102,24 +130,56 @@
 <div class="row">
     <div class="col-lg-4">
         <div class="form-group">
-            <label>Cotiza por:</label>
-            <select name="cotiza" class="form-control" required>
-                <option value="">Seleccione fuente </option>
-                <option value="1">Escalafon</option>
-                <option value="2">INPREMA</option>
-                <option value="3">Cooperativa COMASOL</option>
-                <option value="4">Ventanilla</option>
-                <option value="5">No Aplica</option>
+            <label for="direccion" class="col-form-label requerido">Dirección</label>
+            <div>
+                <textarea name="direccion" id="direccion" class="form-control" rows="3" placeholder="Enter ..." required>{{old('direccion', $data->direccion ?? '')}}</textarea>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label for="fnac" class="col-form-label requerido">Afiliado desde</label>
+            <div>
+                <input type="date" name="f_afiliacion" id="f_afiliacion" class="form-control"
+                    value="{{old('f_afiliacion', $data->f_afiliacion ?? '')}}" required />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label for="estado" class="col-form-label requerido">Estado</label>
+            <select name="estado" id="estado" class="form-control" required>
+                <option value="">Seleccione</option>
+                <option value="1" {{old("estado", $data->estado ?? "") == 1 ? "selected" : ""}}>Activo</option>
+                <option value="2" {{old("estado", $data->estado ?? "") == 2 ? "selected" : ""}}>Inactivo</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label for="cotiza_id" class="control-label {{!isset($data) ? 'requerido' : '' }}">Cotizacion</label>
+            <select name="cotiza_id" id="cotiza_id" class="form-control" required>
+                <option value="">Cotiza por:</option>
+                @foreach ($cotizas as $id => $nombre)
+                <option value="{{$id}}" {{old("cotiza_id", $data->cotiza_id ?? "") == $id ? "selected" : ""}}>
+                    {{$nombre}}</option>
+                @endforeach
             </select>
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            <label for="banco" class="col-form-label requerido">Banco</label>
-            <div>
-                <input type="text" name="banco" id="banco" class="form-control"
-                    value="{{old('banco', $data->banco ?? '')}}" />
-            </div>
+            <label for="banco_id" class="control-label {{!isset($data) ? 'requerido' : '' }}">Banco</label>
+            <select name="banco_id" id="banco_id" class="form-control" required>
+                <option value="">Seleccione</option>
+                @foreach ($bancos as $id => $nombre)
+                <option value="{{$id}}" {{old("banco_id", $data->banco_id ?? "") == $id ? "selected" : ""}}>
+                    {{$nombre}}</option>
+                @endforeach
+            </select>
         </div>
     </div>
     <div class="col-lg-4">
@@ -135,31 +195,31 @@
 <div class="row">
     <div class="col-lg-4">
         <div class="form-group">
-            <label for="departamento"
-                class="col-form-label requerido">Departamento</label>
-            <div>
-                <input type="text" name="departamento" id="departamento"
-                    class="form-control"
-                    value="{{old('departamento', $data->departamento ?? '')}}"
-                    required />
-            </div>
+            <label for="departamento_id"
+                class="control-label {{!isset($data) ? 'requerido' : '' }}">Departamento</label>
+            <select name="departamento_id" id="departamento_id" class="form-control" required>
+                <option value="">Selecciona tu Departamento</option>
+                @foreach ($departamentos as $id => $nombre)
+                <option value="{{$id}}"
+                    {{old("departamento_id", $data->departamento_id['id'] ?? "") == $id ? "selected" : ""}}>
+                    {{$nombre}}</option>
+                @endforeach
+            </select>
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            <label for="municipio" class="col-form-label requerido">Municipio</label>
-            <div>
-                <input type="text" name="municipio" id="municipio" class="form-control"
-                    value="{{old('municipio', $data->municipio ?? '')}}" required />
-            </div>
+            <label for="municipio_id" class="control-label {{!isset($data) ? 'requerido' : '' }}">Municipio</label>
+            <select name="municipio_id" id="municipio_id" class="form-control" />
+            <option>Selecciona tu Municipio</option>
+            </select>
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
             <label for="titulo" class="col-form-label requerido">Título</label>
             <div>
-                <input type="text" name="titulo" id="titulo" class="form-control"
-                    value="{{old('titulo', $data->titulo ?? '')}}" required />
+                <textarea name="titulo" id="titulo" class="form-control" rows="3" required>{{old('titulo', $data->titulo ?? '')}}</textarea>
             </div>
         </div>
     </div>
@@ -180,15 +240,15 @@
             <label>Administración</label>
             <select name="admon" class="form-control">
                 <option value="">Seleccione la Administración</option>
-                <option value="1">Gubernamental</option>
-                <option value="2">No-Gubernamental</option>
-                <option value="3">No Aplica</option>
+                <option value="1" {{old("admon", $data->admon ?? "") == 1 ? "selected" : ""}}>Gubernamental</option>
+                <option value="2" {{old("admon", $data->admon ?? "") == 2 ? "selected" : ""}}>No-Gubernamental</option>
+                <option value="3" {{old("admon", $data->admon ?? "") == 3 ? "selected" : ""}}>No Aplica</option>
             </select>
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            <label for="lugar" class="col-form-label requerido">1.-
+            <label for="lugar" class="col-form-label">1.-
                 Lugar</label>
             <div>
                 <input type="text" name="lugar" id="lugar" class="form-control"
@@ -200,7 +260,7 @@
 <div class="row">
     <div class="col-lg-4">
         <div class="form-group">
-            <label for="centrod" class="col-form-label requerido">2.- Centro
+            <label for="centrod" class="col-form-label">2.- Centro
                 Educativo</label>
             <div>
                 <input type="text" name="centrod" id="centrod" class="form-control"
@@ -213,15 +273,15 @@
             <label>Administración</label>
             <select name="admond" class="form-control">
                 <option value="">Seleccione la Administración</option>
-                <option value="1">Gubernamental</option>
-                <option value="2">No-Gubernamental</option>
-                <option value="3">No Aplica</option>
+                <option value="1" {{old("admond", $data->admond ?? "") == 1 ? "selected" : ""}}>Gubernamental</option>
+                <option value="2" {{old("admond", $data->admond ?? "") == 2 ? "selected" : ""}}>No-Gubernamental</option>
+                <option value="3" {{old("admond", $data->admond ?? "") == 3 ? "selected" : ""}}>No Aplica</option>
             </select>
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            <label for="lugard" class="col-form-label requerido">2.-
+            <label for="lugard" class="col-form-label">2.-
                 Lugar</label>
             <div>
                 <input type="text" name="lugard" id="lugard" class="form-control"

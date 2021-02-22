@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ValidacionAfiliado extends FormRequest
+class ValidacionCuenta extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,7 @@ class ValidacionAfiliado extends FormRequest
     public function rules()
     {
         return [
-            'identidad' => 'required|max:15|unique:afiliados,identidad,' . $this->route('id'),
-            'nombre' => 'required|max:100',
-            'email' => 'required|email|max:100|unique:afiliados,email,' . $this->route('id'),
-            'celular' => 'required|max:15',
-            'foto_up' => 'nullable|image|max:1024'
+            'nombre' => 'required|max:50|unique:cuentas,nombre,' . $this->route('id'),
         ];
     }
 }

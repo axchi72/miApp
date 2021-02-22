@@ -1,22 +1,11 @@
 @extends("theme.$theme.layout")
 
 @section('titulo')
-    Registrar
-@endsection
-
-@section('styles')
-<link href="{{asset("assets/js/bootstrap-fileinput/css/fileinput.min.css")}}" rel="stylesheet" type="text/css" />
-@endsection
-
-@section('scriptsPlugins')
-<script src="{{asset("assets/js/bootstrap-fileinput/js/fileinput.min.js")}}" type="text/javascript"></script>
-<script src="{{asset("assets/js/bootstrap-fileinput/js/locales/es.js")}}" type="text/javascript"></script>
-<script src="{{asset("assets/js/bootstrap-fileinput/themes/fas/theme.min.js")}}" type="text/javascript"></script>
+    Editar Cotización
 @endsection
 
 @section('scripts')
-<script src="{{asset("assets/pages/scripts/frontend/afiliados/crear.js")}}" type="text/javascript"></script>
-<script src="{{asset("assets/pages/scripts/frontend/afiliados/munis.js")}}" type="text/javascript"></script>
+    <script src="{{asset("assets/pages/scripts/admin/crear.js")}}" type="text/javascript"></script>
 @endsection
 
 @section('contenido')
@@ -26,12 +15,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Sistema de Afiliados</h1>
+          <h1>Sistema de Cotización</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{ route('afiliado') }}">Sistema de Afiliados</a></li>
-            <li class="breadcrumb-item active">Crear Afiliado</li>
+            <li class="breadcrumb-item"><a href="{{ route('cotiza') }}">Sistema de Cotización</a></li>
+            <li class="breadcrumb-item active">Editar Cotización</li>
           </ol>
         </div>
       </div>
@@ -49,7 +38,7 @@
                 <h3 class="card-title">Crear</h3>
 
                 <div class="card-tools">
-                    <a href="{{ route('afiliado') }}" class="btn btn-block btn-outline-primary">
+                    <a href="{{ route('cotiza') }}" class="btn btn-block btn-outline-primary">
                         <i class="fas fa-reply-all"></i> Volver al listado
                     </a>
                 </div>
@@ -60,10 +49,10 @@
                             <h3 class="card-title">Mantenimiento de registros</h3>
                         </div>
                         <!-- /.card-header -->
-            <form action="{{ route('guardar_afiliado') }}" id="form-general" class="form-horizontal form--label-right" method="POST" autocomplete="off" enctype="multipart/form-data">
-                @csrf
+            <form action="{{ route('actualizar_cotiza', ['id' => $data->id]) }}" id="form-general" class="form-horizontal form--label-right" method="POST" autocomplete="off">
+                @csrf @method("put")
                         <div class="card-body">
-                            @include('afiliado.form')
+                            @include('parametrizacion.cotiza.form')
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -72,7 +61,7 @@
                 <div class="card-footer">
                     <div class="col-lg-2"></div>
                     <div class="col-lg-10">
-                        @include('includes.boton-form-crear')
+                        @include('includes.boton-form-editar')
                     </div>
                 </div>
                 <!-- /.card-footer-->
